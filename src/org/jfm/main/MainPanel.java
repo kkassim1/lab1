@@ -185,6 +185,10 @@ public class MainPanel extends JPanel {
 		LogOutAction logout = new LogOutAction();
 		logoutButton.addActionListener(logout);
 
+		JButton changePassword = new JButton("changePassword");
+		AddUserAction changePwd = new AddUserAction();
+		changePassword.addActionListener(changePwd);
+
 		String[] rpm = RolesSingleton.getRoleMapping().getPrivilegesForRole(userRole);
 // added the logic below here
 		if (rpm != null) {
@@ -217,6 +221,9 @@ public class MainPanel extends JPanel {
 				}
 				if (rpm[i].equals(CommonConstants.ADDUSER_ACTION)) {
 					buttons.addElement(addNewUser);
+				}
+				if (rpm[i].equals(CommonConstants.CHANGE_PASSWORD_ACTION)) {
+					buttons.addElement(changePassword);
 				}
 				
 			}
