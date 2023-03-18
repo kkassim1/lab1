@@ -190,7 +190,7 @@ public class MainPanel extends JPanel {
 		changePassword.addActionListener(changePwd);
 
 		String[] rpm = RolesSingleton.getRoleMapping().getPrivilegesForRole(userRole);
-// added the logic below here
+// added the logic below here TASK H2
 		if (rpm != null) {
 			for (int i = 0; i < rpm.length; i++) {
 				System.out.println("Privileges for " + userRole + " role: " + rpm[i] + i);

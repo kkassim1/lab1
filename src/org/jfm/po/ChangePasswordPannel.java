@@ -37,6 +37,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import edu.asu.ser335.jfm.RolesSingleton;
+import edu.asu.ser335.jfm.UsersSingleton;
 import io.whitfin.siphash.SipHasher;
 
 /**
@@ -130,9 +131,27 @@ public class ChangePasswordPannel extends JFrame implements ActionListener {
 		String password = String.valueOf(fieldPassword.getPassword());
 		String role = (String) roleList.getSelectedItem();
 		
-		// TODO: for you to complete!
+		// implemented this TASK H3
 		JOptionPane.showMessageDialog(null, "NOT IMPLEMENETD YET!!");
 
+
+		// Check if any fields are empty
+		if (userName.isEmpty() || password.isEmpty()) {
+			JOptionPane.showMessageDialog(this, "Please enter username and password.");
+			return;
+		}
+	
+		try {
+			if (!UsersSingleton.createPasswordMapping(userName, password, role)) {
+				JOptionPane.showMessageDialog(null, "User already exists or fields incomplete!!");
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "User created successfully!!");
+				dispose();
+			}
+		} catch (Throwable t) {
+			JOptionPane.showMessageDialog(null, "Some error accessing file!!");	
+		}
 	}
 
 }
